@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import javax.swing.JOptionPane;
+
 public class Client {
 
 	String ip;
@@ -43,6 +45,22 @@ public class Client {
 	}
 	
 	public void sendMessage() {
-		
+		if(canChat == true) {
+			String msg = JOptionPane.showInputDialog("What is the message?");
+			if(msg.equals("End")) {
+				canChat = false;
+			}
+			else {
+				try {
+					dos.writeUTF(msg + " (From Client)");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Server Not Found");
+		}
 	}
 }

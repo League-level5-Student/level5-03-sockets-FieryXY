@@ -67,7 +67,7 @@ public class Server {
 					canChat = false;
 				}
 				else {
-					dos.writeUTF(msg);
+					dos.writeUTF(msg + " (From Server)");
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
